@@ -23,7 +23,7 @@ class TodoListUI extends Component {
                         dataSource={this.props.list}
                         renderItem={(item, index) => (
                             <List.Item
-                                onClick={index => {
+                                onClick={() => {
                                     this.props.deleteItem(index);
                                 }}
                             >
