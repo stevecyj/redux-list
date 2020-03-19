@@ -9,6 +9,7 @@ class TodoList extends Component {
         this.state = store.getState();
         this.changeInputValue = this.changeInputValue.bind(this);
         this.storeChange = this.storeChange.bind(this);
+        this.clickBtn = this.clickBtn.bind(this);
         store.subscribe(this.storeChange);
     }
     render() {
@@ -21,10 +22,18 @@ class TodoList extends Component {
                         onChange={this.changeInputValue}
                         value={this.state.inputValue}
                     />
-                    <Button type="primary">增加</Button>
+                    <Button type="primary" onClick={this.clickBtn}>
+                        增加
+                    </Button>
                 </div>
                 <div style={{ margin: '10px', width: '300px' }}>
-                    <List bordered dataSource={this.state.list} renderItem={item => <List.Item>{item}</List.Item>} />
+                    <List
+                        bordered
+                        dataSource={this.state.list}
+                        renderItem={(item, index) => (
+                            <List.Item onClick={this.deleteItem.bind(this, index)}>{item}</List.Item>
+                        )}
+                    />
                 </div>
             </div>
         );
@@ -39,6 +48,19 @@ class TodoList extends Component {
 
     storeChange() {
         this.setState(store.getState());
+    }
+
+    clickBtn() {
+        const action = { type: 'addItem' };
+        store.dispatch(action);
+    }
+
+    deleteItem(index) {
+        const action = {
+            type: 'deleteItem',
+            index
+        };
+        store.dispatch(action);
     }
 }
 
