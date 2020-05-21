@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 初始資料內容
+
+```javascript=
+{
+  "data": {
+    "list": [
+      "早上4点起床，锻炼身体",
+      "中午下班游泳一小时",
+      "晚上8点到10点，学习两个小时",
+      "整天狂吃零食",
+      "一天到晚宅在家"
+    ]
+  }
+}
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
